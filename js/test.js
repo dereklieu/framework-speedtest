@@ -7,8 +7,9 @@ var createElement = require('virtual-dom/create-element');
 var $ = require('jquery');
 var _ = require('lodash');
 
-var size = 10000;
+var size = 20000;
 var initial = [];
+var timeOut = 0;
 var mod = 5;
 for (var i = 0; i < size; ++i) {
   initial.push(i);
@@ -72,7 +73,7 @@ function jquery () {
     console.log(time2, 'ms redraw');
 
     $test.html('<p>Initial: ' + time1 + ' redraw: ' + time2 + '</p>');
-  }, 1000);
+  }, timeOut);
 }
 
 function react () {
@@ -103,7 +104,7 @@ function react () {
     console.log(time2, 'ms redraw');
 
     $test.html('<p>Initial: ' + time1 + ' redraw: ' + time2 + '</p>');
-  }, 1000);
+  }, timeOut);
 }
 
 function virtualDom () {
@@ -132,7 +133,7 @@ function virtualDom () {
     var time2 = t1-t0;
     console.log(time2, 'ms redraw');
     $test.html('<p>Initial: ' + time1 + ' redraw: ' + time2 + '</p>');
-  }, 1000);
+  }, timeOut);
 }
 
 window.tests = {

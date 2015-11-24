@@ -53,8 +53,9 @@
 	var $ = __webpack_require__(194);
 	var _ = __webpack_require__(195);
 
-	var size = 10000;
+	var size = 20000;
 	var initial = [];
+	var timeOut = 0;
 	var mod = 5;
 	for (var i = 0; i < size; ++i) {
 	  initial.push(i);
@@ -115,7 +116,7 @@
 	    console.log(time2, 'ms redraw');
 
 	    $test.html('<p>Initial: ' + time1 + ' redraw: ' + time2 + '</p>');
-	  }, 1000);
+	  }, timeOut);
 	}
 
 	function react() {
@@ -158,7 +159,7 @@
 	    console.log(time2, 'ms redraw');
 
 	    $test.html('<p>Initial: ' + time1 + ' redraw: ' + time2 + '</p>');
-	  }, 1000);
+	  }, timeOut);
 	}
 
 	function virtualDom() {
@@ -187,7 +188,7 @@
 	    var time2 = t1 - t0;
 	    console.log(time2, 'ms redraw');
 	    $test.html('<p>Initial: ' + time1 + ' redraw: ' + time2 + '</p>');
-	  }, 1000);
+	  }, timeOut);
 	}
 
 	window.tests = {
