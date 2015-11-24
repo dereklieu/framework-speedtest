@@ -5,8 +5,9 @@ var diff = require('virtual-dom/diff');
 var patch = require('virtual-dom/patch');
 var createElement = require('virtual-dom/create-element');
 var $ = require('jquery');
+var _ = require('lodash');
 
-var size = 1000;
+var size = 10000;
 var initial = [];
 var mod = 5;
 for (var i = 0; i < size; ++i) {
@@ -51,8 +52,13 @@ function jquery () {
     }));
   }
 
+  function renderLodashTable (data) {
+    var template = _.template('<table style="width: 100%; text-align: center; font-size: 1em; font-family: Helvetica, sans-serif; line-height: 1em;"><% _.forEach(data, function (d) { %><tr style=""><td style="border: 1px solid #eee; padding: 1em;"><%= d %></td></tr><% }); %></table>');
+    return template(data);
+  }
+
   var t0 = performance.now();
-  $test.html(renderTable(initial));
+  $test.html(renderLodashTable({data: initial}));
   var t1 = performance.now();
   var time1 = t1-t0;
   console.log('JQUERY');
@@ -60,7 +66,7 @@ function jquery () {
 
   window.setTimeout(function () {
     var t0 = performance.now();
-    $test.html(renderTable(inverse));
+    $test.html(renderLodashTable({data: inverse}));
     var t1 = performance.now();
     var time2 = t1-t0;
     console.log(time2, 'ms redraw');

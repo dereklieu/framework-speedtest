@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "virtual-dom": "^2.1.1"
